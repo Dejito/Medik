@@ -12,6 +12,8 @@ import 'package:medik/pages/sign_in/sign_in_screen.dart';
 import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:medik/pages/welcome/welcome_screen.dart';
 
+import '../../pages/profile/settings/bloc/settings_bloc.dart';
+import '../../pages/profile/settings/settings_page.dart';
 import '../../pages/register/bloc/register_bloc.dart';
 import '../../pages/register/register.dart';
 import '../../pages/sign_in/bloc/sign_in_bloc.dart';
@@ -53,6 +55,11 @@ class AppPages {
         bloc: BlocProvider(
           create: (context) => HomepageBloc(),
         ),
+      ),
+      PageEntity(
+        route: AppRoutes.settingsPage,
+        page: const SettingsPage(),
+        bloc: BlocProvider(create: (context) => SettingsBloc(),),
       ),
     ];
   }

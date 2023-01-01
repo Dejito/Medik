@@ -160,7 +160,7 @@ Widget slidersView(
             // print(state.index);
           },
           children: [
-            sliderContainer('art'),
+            sliderContainer('Art'),
             sliderContainer('Image(1)'),
             sliderContainer('Image(2)'),
           ],
