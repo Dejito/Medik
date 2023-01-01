@@ -9,5 +9,9 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
     on<HomepageEvent>((event, emit) {
       // TODO: implement event handler
     });
+    on<HomeDotsEvent>(_homeDotEvent);
+  }
+  void _homeDotEvent(HomeDotsEvent event, Emitter<HomepageState> emit){
+    emit(HomepageState(index: event.index));
   }
 }

@@ -1,13 +1,16 @@
 part of 'homepage_bloc.dart';
 
 class HomepageState {
-  int index = 0;
+  int index;
 
-  HomepageState({required this.index});
+  HomepageState({this.index = 0});
+
+  HomepageState copyWith(int index){
+    return HomepageState(index: index);
+  }
 
 }
 
 class HomepageInitial extends HomepageState {
-  // HomepageInitial(): super(index: 0);
-  HomepageInitial({required super.index});
+  HomepageInitial({super.index});
 }

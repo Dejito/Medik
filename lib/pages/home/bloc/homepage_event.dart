@@ -1,4 +1,12 @@
 part of 'homepage_bloc.dart';
 
-@immutable
-sealed class HomepageEvent {}
+class HomepageEvent {
+
+}
+
+class HomeDotsEvent extends HomepageEvent {
+  final int index;
+
+  HomeDotsEvent(this.index);
+
+}

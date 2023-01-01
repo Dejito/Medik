@@ -121,7 +121,7 @@ Widget slidersView(
         height: 160.h,
         child: PageView(
           onPageChanged: (value) {
-            // context.read<HomepageBloc>().add(HomePageDots(value));
+            context.read<HomepageBloc>().add(HomeDotsEvent(value));
             // print(state.index);
           },
           children: [
