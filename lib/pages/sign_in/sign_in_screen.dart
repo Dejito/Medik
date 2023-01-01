@@ -5,6 +5,7 @@ import 'package:medik/pages/register/register.dart';
 import 'package:medik/pages/sign_in/sign_in_controller.dart';
 import 'package:medik/pages/sign_in/sign_in_widgets.dart';
 
+import '../../common/widget/base_text_widget.dart';
 import '../common_widgets.dart';
 import 'bloc/sign_in_bloc.dart';
 

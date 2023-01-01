@@ -6,6 +6,8 @@ import 'package:medik/common/service/storage_service.dart';
 import 'package:medik/common/values/constant.dart';
 import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/applications/bloc/application_bloc.dart';
+import 'package:medik/pages/home/bloc/homepage_bloc.dart';
+import 'package:medik/pages/home/homepage.dart';
 import 'package:medik/pages/sign_in/sign_in_screen.dart';
 import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:medik/pages/welcome/welcome_screen.dart';
@@ -43,6 +45,13 @@ class AppPages {
         page: const ApplicationPage(),
         bloc: BlocProvider(
           create: (context) => ApplicationBloc(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.homepage,
+        page: const HomePageScreen(),
+        bloc: BlocProvider(
+          create: (context) => HomepageBloc(),
         ),
       ),
     ];

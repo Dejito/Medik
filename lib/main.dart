@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medik/common/routes/pages.dart';
 import 'package:medik/common/values/colors.dart';
 import 'package:medik/global.dart';
+import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/sign_in/sign_in_screen.dart';
 
 Future<void> main() async {
@@ -42,8 +43,8 @@ class MyApp extends StatelessWidget {
             ),
             useMaterial3: true,
           ),
-          // home: const SignInScreen(),
-          onGenerateRoute: AppPages.generateRouteSettings,
+          home: const ApplicationPage(),
+          // onGenerateRoute: AppPages.generateRouteSettings,
           debugShowCheckedModeBanner: false,
           // routes: {
           //   WelcomeScreen.route: (context) => const WelcomeScreen(),

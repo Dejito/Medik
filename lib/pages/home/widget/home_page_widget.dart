@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/values/colors.dart';
+import '../../../common/widget/base_text_widget.dart';
+import '../../sign_in/sign_in_widgets.dart';
 import '../bloc/homepage_bloc.dart';
 
 AppBar buildHomePageAppBar() {
@@ -48,6 +50,39 @@ Widget homePageText(String text,
     ),
   );
 }
+
+Widget menuView() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Container(
+        width: 325.w,
+        margin: EdgeInsets.only(top: 15.h),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            reusableText("Choose your course"),
+            reusableText("See all",
+                fontSize: 10, color: AppColors.primaryThreeElementText),
+
+          ],
+        ),
+      ),
+      Container(
+        margin: EdgeInsets.only(top: 20.w),
+        child: Row(
+          children: [
+            reusableMenuText('All', ),
+            reusableMenuText('Popular', backgroundColor: Colors.transparent, textColor: AppColors.primaryThreeElementText ),
+            reusableMenuText('Newest', backgroundColor: Colors.transparent, textColor: AppColors.primaryThreeElementText),
+          ],
+        ),
+      )
+    ],
+  );
+}
+
 
 Widget searchView() {
   return Row(
@@ -162,53 +197,6 @@ Widget sliderContainer(String imageName) {
     ),
   );
 }
-
-// Widget menuView() {
-//   return Column(
-//     crossAxisAlignment: CrossAxisAlignment.start,
-//     children: [
-//       Container(
-//         width: 325.w,
-//         margin: EdgeInsets.only(top: 15.h),
-//         child: Row(
-//           crossAxisAlignment: CrossAxisAlignment.end,
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             reusableText("Choose your course"),
-//             reusableText("See all",
-//                 fontSize: 10, color: AppColors.primaryThreeElementText),
-//
-//           ],
-//         ),
-//       ),
-//       Container(
-//         margin: EdgeInsets.only(top: 20.w),
-//         child: Row(
-//           children: [
-//             reusableMenuText('All', ),
-//             reusableMenuText('Popular', backgroundColor: Colors.transparent, textColor: AppColors.primaryThreeElementText ),
-//             reusableMenuText('Newest', backgroundColor: Colors.transparent, textColor: AppColors.primaryThreeElementText),
-//           ],
-//         ),
-//       )
-//     ],
-//   );
-// }
-
-// Widget reusableMenuText(String text,
-//     {Color backgroundColor = AppColors.primaryElement,
-//     Color textColor = AppColors.primaryElementText}) {
-//   return Container(
-//     margin: EdgeInsets.only(right: 20.w),
-//     decoration: BoxDecoration(
-//         color: backgroundColor,
-//         borderRadius: BorderRadius.circular(7.w),
-//         border: Border.all(color: backgroundColor)),
-//     padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
-//     child: reusableText(text,
-//         color: textColor, fontWeight: FontWeight.normal, fontSize: 11),
-//   );
-// }
 
 
 Widget courseGrid() {
