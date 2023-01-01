@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medik/common/routes/names.dart';
 import 'package:medik/common/service/storage_service.dart';
@@ -19,6 +20,7 @@ import '../../pages/register/register.dart';
 import '../../pages/sign_in/bloc/sign_in_bloc.dart';
 
 class AppPages {
+
   static List<PageEntity> routes() {
     return <PageEntity>[
       PageEntity(
@@ -152,6 +154,14 @@ class AppPages {
   //     return MaterialPageRoute(
   //       builder: (_) => const WelcomeScreen(), settings: settings);
   //   }
+  // }
+
+  // List bList = ["oto", "moto"];
+  //
+  // Widget conta (){
+  //   bList.forEach((element) {
+  //     return Container();
+  //   })
   // }
 
   static List allBlocProviders(BuildContext context) {

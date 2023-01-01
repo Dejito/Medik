@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medik/pages/home/bloc/homepage_bloc.dart';
 import 'package:medik/pages/profile/settings/settings_widget/settings_widget.dart';
 import 'package:medik/pages/profile/widget/profile_widget.dart';
 
 import '../../../common/routes/names.dart';
+import '../../../common/values/constant.dart';
 import '../../../global.dart';
 import '../../counter_test/app_bloc.dart';
 import 'bloc/settings_bloc.dart';
@@ -18,12 +20,12 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  // void removeUserData(BuildContext context) {
-  //   context.read<AppBloc>().add(const TriggerAppEvent(0));
-  //   Global.storageService.removeString(AppConstant.STORAGE_USER_TOKEN_KEY);
-  //   Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.signIn, (route) => false);
-  //   // pushReplacementNamed(AppRoutes.signIn);
-  // }
+  void removeUserData(BuildContext context) {
+    context.read<HomepageBloc>().add(HomeDotsEvent(0));
+    Global.storageService.removeString(AppConstant.storageUserProfileKey);
+    Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.signIn, (route) => false);
+    Navigator.of(context).pushReplacementNamed(AppRoutes.signIn);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +34,10 @@ class _SettingsPageState extends State<SettingsPage> {
       body: SingleChildScrollView(
         child: BlocBuilder<SettingsBloc, SettingsState>(
           builder: (context, state) {
-            return Container(
-              child: Column(
-                children: [
-                  // logoutButton(context, () => removeUserData(context))
-                ],
-              ),
+            return Column(
+              children: [
+                logoutButton(context, () => {})
+              ],
             );
           },
         ),

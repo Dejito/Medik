@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,9 @@ import 'package:medik/common/routes/pages.dart';
 import 'package:medik/common/values/colors.dart';
 import 'package:medik/global.dart';
 import 'package:medik/pages/applications/applications_page.dart';
+import 'package:medik/pages/profile/settings/settings_page.dart';
 import 'package:medik/pages/sign_in/sign_in_screen.dart';
+import 'package:medik/pages/welcome/welcome_screen.dart';
 
 Future<void> main() async {
   try {
@@ -46,13 +49,14 @@ class MyApp extends StatelessWidget {
           home: const ApplicationPage(),
           // onGenerateRoute: AppPages.generateRouteSettings,
           debugShowCheckedModeBanner: false,
-          // routes: {
-          //   WelcomeScreen.route: (context) => const WelcomeScreen(),
-          //   // MyHomePage.route: (context) => const MyHomePage(),
-          //   SignInScreen.route: (context) => const SignInScreen(),
-          //   Register.id: (context) => const Register(),
-          //
-          // },
+          routes: {
+            WelcomeScreen.route: (context) => const WelcomeScreen(),
+            // MyHomePage.route: (context) => const MyHomePage(),
+            SignInScreen.route: (context) => const SignInScreen(),
+            // Register.id: (context) => const Register(),
+            SettingsPage.route: (context) => SettingsPage()
+
+          },
         ),
       ),
     );
