@@ -1,4 +1,7 @@
 part of 'app_bloc.dart';
 
-@immutable
-sealed class AppEvent {}
+class AppEvent {}
+
+class Increment extends AppEvent{}
+
+class Decrement extends AppEvent{}

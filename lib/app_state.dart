@@ -1,13 +1,12 @@
  part of 'app_bloc.dart';
 
-// @immutable
-sealed class AppState {
-  final int counter;
+ class AppState {
+   int counter;
 
-  const AppState({required this.counter});
+   AppState({required this.counter});
 
 }
 
 final class AppInitial extends AppState {
-  const AppInitial():super(counter: 0);
+   AppInitial():super(counter: 0);
 }
