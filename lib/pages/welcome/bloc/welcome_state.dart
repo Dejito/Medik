@@ -1,6 +1,11 @@
 part of 'welcome_bloc.dart';
 
-@immutable
-sealed class WelcomeState {}
+class WelcomeState {
+  int position;
 
-final class WelcomeInitial extends WelcomeState {}
+  WelcomeState({required this.position});
+}
+
+final class WelcomeInitial extends WelcomeState {
+  WelcomeInitial(): super(position: 0);
+}
