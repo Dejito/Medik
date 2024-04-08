@@ -10,21 +10,23 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-  providers: [
-    BlocProvider(
-      create: (context) => WelcomeBloc(),
-),
-    BlocProvider(
-      create: (context) => AppBloc(),
-    ),
-  ],
-  child: ScreenUtilInit(
+      providers: [
+        BlocProvider(
+          create: (context) => WelcomeBloc(),
+        ),
+        BlocProvider(
+          lazy: true,
+          create: (context) => AppBloc(),
+        ),
+      ],
+      child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           title: 'Medik',
           theme: ThemeData(
@@ -32,15 +34,20 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: const WelcomeScreen(),
+          routes: {
+            WelcomeScreen.route: (context) => const WelcomeScreen(),
+            MyHomePage.route: (context) => const MyHomePage(),
+          },
         ),
       ),
-);
+    );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage();
+  static const route = "home_screen";
 
+  const MyHomePage();
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();

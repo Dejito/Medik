@@ -8,6 +8,9 @@ import 'package:medik/main.dart';
 import 'bloc/welcome_bloc.dart';
 
 class WelcomeScreen extends StatefulWidget {
+
+  static const route = "welcome_screen";
+
   const WelcomeScreen({super.key});
 
   @override
@@ -133,7 +136,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   curve: Curves.linear
               );
             } else {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyHomePage() ));
+              Navigator.of(context).pushReplacementNamed(MyHomePage.route);
             }
           },
           child: Container(
