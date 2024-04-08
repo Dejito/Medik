@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medik/main.dart';
+import 'package:medik/pages/sign_in/sign_in_screen.dart';
 
 import 'bloc/welcome_bloc.dart';
 
@@ -136,7 +137,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   curve: Curves.linear
               );
             } else {
-              Navigator.of(context).pushReplacementNamed(MyHomePage.route);
+              Navigator.of(context).pushReplacementNamed(SignInScreen.route);
             }
           },
           child: Container(
