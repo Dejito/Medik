@@ -43,7 +43,7 @@ Widget _reusableIcons(String iconName) {
 
 Widget reusableText(String text) {
   return Container(
-    margin: EdgeInsets.only(bottom: 5.h),
+    margin: EdgeInsets.only(bottom: 5.h, top: 14.h),
     child: Text(
       text,
       style: TextStyle(color: Colors.grey[500], fontSize: 14.sp),
@@ -51,12 +51,13 @@ Widget reusableText(String text) {
   );
 }
 
-Widget buildTextField() {
+Widget buildTextField(String hintText, String textType, String iconName) {
   return Container(
     width: 325.w,
     height: 50.h,
+    margin: EdgeInsets.only(top: 3.h),
     decoration: BoxDecoration(
-        color: Colors.grey,
+        // color: Colors.grey,
         borderRadius: BorderRadius.all(Radius.circular(15.w)),
         border: Border.all(color: Colors.black, width: .5)),
     child: Row(
@@ -65,26 +66,31 @@ Widget buildTextField() {
           width: 16.w,
           height: 16.h,
           margin: EdgeInsets.only(left: 17.w),
-          child: Image.asset("assets/icons/user.png"),
+          child: Image.asset("assets/icons/$iconName.png"),
         ),
         SizedBox(
           width: 270.w,
           height: 50.h,
-          child: TextField(
+          child:  TextField(
             keyboardType: TextInputType.emailAddress,
+            autocorrect: false,
+            obscureText: textType == "password" ? true : false,
             decoration: InputDecoration(
-                hintText: "Enter your email address",
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
-                ),
-              enabledBorder: OutlineInputBorder(
+              hintText: hintText,
+              border: const OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.transparent,
-
-                )
-              )
+                ),
+              ),
+              enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none),
+              focusedBorder: const OutlineInputBorder(borderSide: BorderSide.none),
+              disabledBorder: const OutlineInputBorder(borderSide: BorderSide.none),
+              hintStyle: TextStyle(
+                color: Colors.grey.withOpacity(.6)
+              ),
+            ),
+            style: const TextStyle(
+              fontFamily: "Avenir"
             ),
           ),
         )
