@@ -35,9 +35,10 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: const WelcomeScreen(),
+          debugShowCheckedModeBanner: false,
           routes: {
             WelcomeScreen.route: (context) => const WelcomeScreen(),
-            MyHomePage.route: (context) => const MyHomePage(),
+            // MyHomePage.route: (context) => const MyHomePage(),
             SignInScreen.route: (context) => const SignInScreen(),
           },
         ),
@@ -46,71 +47,71 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  static const route = "home_screen";
-
-  const MyHomePage();
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AppBloc, AppState>(
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            title: Text("ZOMBIE"),
-          ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '${state.counter}',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
-          ),
-
-          floatingActionButton: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              FloatingActionButton(
-                heroTag: "1",
-                onPressed: () {
-                  BlocProvider.of<AppBloc>(context).add(Increment());
-                  print("increased pressed");
-                },
-                tooltip: 'Increment',
-                child: const Icon(Icons.add),
-              ),
-              FloatingActionButton(
-                heroTag: 2,
-                onPressed: () {
-                  BlocProvider.of<AppBloc>(context).add(Decrement());
-                  print("decreased pressed");
-                },
-                tooltip: 'Decrement',
-                child: const Icon(Icons.remove),
-              ),
-            ],
-          ), // This trailing comma makes auto-formatting nicer for build methods.
-        );
-      },
-    );
-  }
-}
+// class MyHomePage extends StatefulWidget {
+//   static const route = "home_screen";
+//
+//   const MyHomePage();
+//
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
+//
+// class _MyHomePageState extends State<MyHomePage> {
+//   int _counter = 0;
+//
+//   void _incrementCounter() {
+//     setState(() {
+//       _counter++;
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocBuilder<AppBloc, AppState>(
+//       builder: (context, state) {
+//         return Scaffold(
+//           appBar: AppBar(
+//             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+//             title: Text("ZOMBIE"),
+//           ),
+//           body: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               const Text(
+//                 'You have pushed the button this many times:',
+//               ),
+//               Text(
+//                 '${state.counter}',
+//                 style: Theme.of(context).textTheme.headlineMedium,
+//               ),
+//             ],
+//           ),
+//
+//           floatingActionButton: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//             children: [
+//               FloatingActionButton(
+//                 heroTag: "1",
+//                 onPressed: () {
+//                   BlocProvider.of<AppBloc>(context).add(Increment());
+//                   print("increased pressed");
+//                 },
+//                 tooltip: 'Increment',
+//                 child: const Icon(Icons.add),
+//               ),
+//               FloatingActionButton(
+//                 heroTag: 2,
+//                 onPressed: () {
+//                   BlocProvider.of<AppBloc>(context).add(Decrement());
+//                   print("decreased pressed");
+//                 },
+//                 tooltip: 'Decrement',
+//                 child: const Icon(Icons.remove),
+//               ),
+//             ],
+//           ), // This trailing comma makes auto-formatting nicer for build methods.
+//         );
+//       },
+//     );
+//   }
+// }
