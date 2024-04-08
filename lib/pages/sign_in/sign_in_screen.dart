@@ -10,25 +10,28 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(),
-        body: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildThirdPartyLogin(),
-                Center(
-                  child: reusableText("Or use email account to login"),
-                ),
-                reusableText("Email"),
-                buildTextField("Enter your email address", "email", "user"),
-                reusableText("Password"),
-                buildTextField("Enter your password", "password", "lock")
-              ],
-            ),
+      appBar: buildAppBar(),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildThirdPartyLogin(),
+              Center(
+                child: reusableText("Or use email account to login"),
+              ),
+              reusableText("Email"),
+              buildTextField("Enter your email address", "email", "user"),
+              reusableText("Password"),
+              buildTextField("Enter your password", "password", "lock"),
+              forgotPassword(),
+              buildLoginAndRegButton("Login", 'login', () {}),
+              buildLoginAndRegButton("Register", 'reg', () {}),
+            ],
           ),
         ),
+      ),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/values/colors.dart';
+
 AppBar buildAppBar() {
   return AppBar(
     bottom: PreferredSize(
@@ -96,6 +98,62 @@ Widget buildTextField(String hintText, String textType, String iconName) {
         )
         // TextField()
       ],
+    ),
+  );
+}
+
+Widget forgotPassword() {
+  return Container(
+    margin: EdgeInsets.only(top: 15.h),
+    width: 260.w,
+    height: 44.h,
+    child: GestureDetector(
+      onTap: () {},
+      child: const Text(
+        "Forgot Password",
+        style: TextStyle(
+            decoration: TextDecoration.underline, decorationColor: Colors.blue),
+      ),
+    ),
+  );
+}
+
+
+Widget buildLoginAndRegButton(
+    String buttonName,
+    String buttonType, Function onTap,
+    ) {
+  return GestureDetector(
+    onTap: () {onTap();},
+    child: Container(
+      width: 350.w,
+      height: 50.h,
+      margin: EdgeInsets.only(top: buttonType == "login" ? 40.h : 20.h),
+      decoration: BoxDecoration(
+          color: buttonType == 'login'
+              ? AppColors.primaryElement
+              : AppColors.primaryBackground,
+          borderRadius: BorderRadius.circular(15.w),
+          border: Border.all(
+            color: buttonType == 'login'
+                ? Colors.transparent
+                : AppColors.primaryFourElementText,
+          ),
+          boxShadow: [
+            BoxShadow(
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: const Offset(0, 1),
+                color: Colors.grey.withOpacity(0.1))
+          ]),
+      child: Center(
+        child: Text(
+          buttonName,
+          style: TextStyle(
+              color: buttonType == 'login' ? Colors.white : Colors.black,
+              fontSize: 16),
+        ),
+      ),
     ),
   );
 }
