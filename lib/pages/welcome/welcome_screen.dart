@@ -131,7 +131,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             if (index < 3) {
               _pageController.animateToPage(
                   index,
-                  duration: const Duration(milliseconds: 600),
+                  duration: const Duration(milliseconds: 200),
                   curve: Curves.linear
               );
             } else {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medik/pages/sign_in/sign_in_controller.dart';
 import 'package:medik/pages/sign_in/sign_in_widgets.dart';
 
 import 'bloc/sign_in_bloc.dart';
@@ -40,7 +41,9 @@ class SignInScreen extends StatelessWidget {
                       }
                   ),
                   forgotPassword(),
-                  buildLoginAndRegButton("Login", 'login', () {}),
+                  buildLoginAndRegButton("Login", 'login', () {
+                    SignInController(context).handleSignIn("email");
+                  }),
                   buildLoginAndRegButton("Register", 'reg', () {}),
                 ],
               );

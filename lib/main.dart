@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,16 +11,20 @@ import 'package:medik/pages/welcome/welcome_screen.dart';
 
 Future<void> main() async {
   try {
-    // await Global.init();
-    if (kDebugMode) {
-      print("firebase init'd >>>>>>");
-    }
+   WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: "AIzaSyBHYlgxWVe9JBHN3IdBrdkryzEzd1GBgrE",
+          appId: "1:58523797120:android:5a2b834e3b5d9a01764865",
+          messagingSenderId: "dejito",
+          projectId: "shopappwithbloc",
+        )
+    );
     runApp(const MyApp());
   } catch (e) {
     if (kDebugMode) {
-      print("firebase ngmi>>>>>>$e");
+      print("firebase ngmi >>>>>>$e");
     }
-    // runApp(const MyApp());
   }
 }
 
