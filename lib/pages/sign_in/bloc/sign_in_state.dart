@@ -8,6 +8,8 @@ class SignInState {
   SignInState({this.email = "", this.password = ""});
 
   SignInState copyWith({String? email, String? password}) {
+    print("email is ${this.email}");
+    print("got here");
     return SignInState(
         email: email ?? this.email, password: password ?? this.password);
   }

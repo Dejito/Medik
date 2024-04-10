@@ -27,9 +27,18 @@ class SignInScreen extends StatelessWidget {
                     child: reusableText("Or use email account to login"),
                   ),
                   reusableText("Email"),
-                  buildTextField("Enter your email address", "email", "user"),
+                  buildTextField("Enter your email address", "email", "user",
+                      (emailValue){
+                       return context.read<SignInBloc>().add(EmailEvent(emailValue));
+                        // print(emailValue);
+                   }
+                  ),
                   reusableText("Password"),
-                  buildTextField("Enter your password", "password", "lock"),
+                  buildTextField("Enter your password", "password", "lock",
+                      (passwordValue){
+                    return context.read<SignInBloc>().add(PasswordEvent(passwordValue));
+                      }
+                  ),
                   forgotPassword(),
                   buildLoginAndRegButton("Login", 'login', () {}),
                   buildLoginAndRegButton("Register", 'reg', () {}),
