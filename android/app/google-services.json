@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "58523797120",
+    "project_id": "shopappwithbloc",
+    "storage_bucket": "shopappwithbloc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58523797120:android:5a2b834e3b5d9a01764865",
+        "android_client_info": {
+          "package_name": "com.example.shop_app_using_bloc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHYlgxWVe9JBHN3IdBrdkryzEzd1GBgrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

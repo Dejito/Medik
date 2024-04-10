@@ -1,17 +1,29 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medik/app_bloc.dart';
+import 'package:medik/pages/counter_test/app_bloc.dart';
+import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:medik/pages/sign_in/sign_in_screen.dart';
 import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:medik/pages/welcome/welcome_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  try {
+    // await Global.init();
+    if (kDebugMode) {
+      print("firebase init'd >>>>>>");
+    }
+    runApp(const MyApp());
+  } catch (e) {
+    if (kDebugMode) {
+      print("firebase ngmi>>>>>>$e");
+    }
+    // runApp(const MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {
-
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -26,6 +38,7 @@ class MyApp extends StatelessWidget {
           lazy: true,
           create: (context) => AppBloc(),
         ),
+        BlocProvider(create: (context) => SignInBloc())
       ],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
