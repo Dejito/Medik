@@ -53,7 +53,6 @@ class SignInController {
           } else if (e.code == 'wrong-password') {
             toastInfo(message: "wrong password");
             return;
-
           } else if (e.code == 'invalid-email') {
             toastInfo(message: "invalid email");
             return;
