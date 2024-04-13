@@ -1,6 +1,19 @@
 part of 'register_bloc.dart';
 
 
-sealed class RegisterState {}
+class RegisterState {
 
-final class RegisterInitial extends RegisterState {}
+  final String username;
+  final String email;
+  final String password;
+  final String rePassword;
+
+  const RegisterState({this.username = "", this.email = "", this.password = "", this.rePassword = ""});
+
+  RegisterState copyWith(String? username, String? email, String? password, String? rePassword) {
+    return RegisterState(username: username ?? this.username, email: email ?? this.email, password: this.password, rePassword: this.rePassword);
+  }
+
+}
+
+class RegisterInitial extends RegisterState {}
