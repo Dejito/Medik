@@ -9,16 +9,16 @@ class UsernameEvent extends RegisterEvent{
   UsernameEvent(this.username);
 }
 
-class EmailEvent extends RegisterEvent{
+class OnboardingEmailEvent extends RegisterEvent{
   final String email;
-  EmailEvent(this.email);
+  OnboardingEmailEvent(this.email);
 
 }
 
-class PasswordEvent extends RegisterEvent{
+class OnboardingPasswordEvent extends RegisterEvent{
   final String password;
 
-  PasswordEvent(this.password);
+  OnboardingPasswordEvent(this.password);
 
 }
 

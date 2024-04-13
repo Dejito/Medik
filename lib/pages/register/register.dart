@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
 
 import '../common_widgets.dart';
 import '../sign_in/sign_in_widgets.dart';
@@ -31,6 +32,7 @@ class _RegisterState extends State<Register> {
               padding: EdgeInsets.symmetric(horizontal: 25.w),
               child: BlocBuilder<RegisterBloc, RegisterState>(
                 builder: (context, state) {
+                  final registerBloc = BlocProvider.of<RegisterBloc>(context);
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -38,9 +40,10 @@ class _RegisterState extends State<Register> {
                       buildTextField(
                         "Enter your username",
                         "email",
-                        "user", (String text) {
-
-                      },
+                        "user",
+                        (String text) {
+                          registerBloc.add(UsernameEvent(text));
+                        },
                       ),
                       SizedBox(
                         height: 12.w,
@@ -50,8 +53,10 @@ class _RegisterState extends State<Register> {
                         "Enter your email address",
                         "email",
                         "user",
-                            (String text) {
-                          // return registerBloc.add(EmailEvent(text));
+                        (String text) {
+                          context.read<RegisterBloc>().add(OnboardingPasswordEvent(text));
+                          // registerBloc.add(OnboardingEmailEvent(text));
+
                         },
                       ),
                       SizedBox(
@@ -64,8 +69,8 @@ class _RegisterState extends State<Register> {
                         "Enter your password",
                         "password",
                         'lock',
-                            (String text) {
-                          // return registerBloc.add(PasswordEvent(text));
+                        (String text) {
+                          registerBloc.add(OnboardingPasswordEvent(text));
                         },
                       ),
                       SizedBox(
@@ -78,8 +83,8 @@ class _RegisterState extends State<Register> {
                         "Re-enter your password",
                         "password",
                         'lock',
-                            (String text) {
-                          // return registerBloc.add(RePasswordEvent(text));
+                        (String text) {
+                          registerBloc.add(RePasswordEvent(text));
                         },
                       ),
                       SizedBox(
@@ -88,9 +93,7 @@ class _RegisterState extends State<Register> {
                       reusableText(
                         "By creating an account, you have to agree to our terms and conditions",
                       ),
-                      buildLoginAndRegButton("Sign up", 'login', () {
-                        // RegisterController(context).handleEmailRegister();
-                      }),
+                      buildLoginAndRegButton("Sign up", 'login', () {}),
                     ],
                   );
                 },
