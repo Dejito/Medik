@@ -6,6 +6,7 @@ import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
 import 'counter_test/app_bloc.dart';
 
 class AppBlocsProvider {
+
   static get blocProviders => [
         BlocProvider(
           create: (context) => WelcomeBloc(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medik/pages/register/register.dart';
 import 'package:medik/pages/sign_in/sign_in_controller.dart';
 import 'package:medik/pages/sign_in/sign_in_widgets.dart';
 
@@ -44,7 +45,9 @@ class SignInScreen extends StatelessWidget {
                   buildLoginAndRegButton("Login", 'login', () {
                     SignInController(context).handleSignIn("email");
                   }),
-                  buildLoginAndRegButton("Register", 'reg', () {}),
+                  buildLoginAndRegButton("Register", 'reg', () {
+                    Navigator.of(context).pushNamed(Register.id);
+                  }),
                 ],
               );
             },

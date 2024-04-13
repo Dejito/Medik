@@ -3,7 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medik/pages/bloc_providers.dart';
 import 'package:medik/pages/counter_test/app_bloc.dart';
+import 'package:medik/pages/register/register.dart';
 import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:medik/pages/sign_in/sign_in_screen.dart';
 import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
@@ -35,16 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => WelcomeBloc(),
-        ),
-        BlocProvider(
-          lazy: true,
-          create: (context) => AppBloc(),
-        ),
-        BlocProvider(create: (context) => SignInBloc())
-      ],
+      providers: AppBlocsProvider.blocProviders,
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           title: 'Medik',
@@ -58,6 +51,8 @@ class MyApp extends StatelessWidget {
             WelcomeScreen.route: (context) => const WelcomeScreen(),
             // MyHomePage.route: (context) => const MyHomePage(),
             SignInScreen.route: (context) => const SignInScreen(),
+            Register.id: (context) => const Register(),
+
           },
         ),
       ),

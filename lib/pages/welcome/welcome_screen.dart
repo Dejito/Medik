@@ -107,12 +107,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             fit: BoxFit.cover,
           ),
         ),
-        Container(
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 24.sp,
-            ),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 24.sp,
           ),
         ),
         Container(
