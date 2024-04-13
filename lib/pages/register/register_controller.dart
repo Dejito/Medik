@@ -18,6 +18,11 @@ class RegisterController{
     final password = state.password;
     final rePassword = state.rePassword;
 
+    print("email is  $email, ");
+    print("username is $username");
+    print("password is  $password ");
+    print("rePassword is $rePassword");
+
     if (username.isEmpty) {
       toastInfo(message: "Username cannot be empty");
       return;

@@ -16,7 +16,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   void _usernameEvent(UsernameEvent event, Emitter<RegisterState> emit) {
     print(event.username);
-    emit(state.copyWith(email: event.username));
+    emit(state.copyWith(username: event.username));
   }
 
   void _emailEvent(OnboardingEmailEvent event, Emitter<RegisterState> emit) {
@@ -25,10 +25,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
   void _passwordEvent(OnboardingPasswordEvent event, Emitter<RegisterState> emit) {
     print(event.password);
-    emit(state.copyWith(email: event.password));
+    emit(state.copyWith(password: event.password));
   }
   void _rePasswordEvent(RePasswordEvent event, Emitter<RegisterState> emit) {
     print(event.rePassword);
-    emit(state.copyWith(email: event.rePassword));
+    emit(state.copyWith(rePassword: event.rePassword));
   }
 }

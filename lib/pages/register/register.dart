@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medik/pages/register/register_controller.dart';
 import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
 
 import '../common_widgets.dart';
@@ -42,7 +43,7 @@ class _RegisterState extends State<Register> {
                         "email",
                         "user",
                         (String text) {
-                          registerBloc.add(UsernameEvent(text));
+                          context.read<RegisterBloc>().add(UsernameEvent(text));
                         },
                       ),
                       SizedBox(
@@ -54,9 +55,10 @@ class _RegisterState extends State<Register> {
                         "email",
                         "user",
                         (String text) {
-                          context.read<RegisterBloc>().add(OnboardingPasswordEvent(text));
-                          // registerBloc.add(OnboardingEmailEvent(text));
-
+                          // context
+                          //     .read<RegisterBloc>()
+                          //     .add((text));
+                          registerBloc.add(OnboardingEmailEvent(text));
                         },
                       ),
                       SizedBox(
@@ -93,7 +95,9 @@ class _RegisterState extends State<Register> {
                       reusableText(
                         "By creating an account, you have to agree to our terms and conditions",
                       ),
-                      buildLoginAndRegButton("Sign up", 'login', () {}),
+                      buildLoginAndRegButton("Sign up", 'login', () {
+                        RegisterController(context).handleEmailRegister();
+                      }),
                     ],
                   );
                 },
