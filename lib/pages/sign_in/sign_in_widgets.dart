@@ -3,20 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/values/colors.dart';
 
-AppBar buildAppBar() {
-  return AppBar(
-    bottom: PreferredSize(
-      preferredSize: const Size.fromHeight(5.0),
-      child: Container(
-        color: Colors.grey.withOpacity(.5),
-        height: 1.0,
-      ),
-    ),
-    title: const Center(
-      child: Text("Login"),
-    ),
-  );
-}
 
 Widget buildThirdPartyLogin() {
   return Container(

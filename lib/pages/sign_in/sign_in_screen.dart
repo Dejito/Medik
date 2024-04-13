@@ -5,6 +5,7 @@ import 'package:medik/pages/register/register.dart';
 import 'package:medik/pages/sign_in/sign_in_controller.dart';
 import 'package:medik/pages/sign_in/sign_in_widgets.dart';
 
+import '../common_widgets.dart';
 import 'bloc/sign_in_bloc.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: buildAppBar("Login"),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 16.w),
