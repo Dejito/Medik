@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medik/common/values/colors.dart';
 import 'package:medik/pages/bloc_providers.dart';
 import 'package:medik/pages/counter_test/app_bloc.dart';
 import 'package:medik/pages/register/register.dart';
@@ -43,6 +44,13 @@ class MyApp extends StatelessWidget {
           title: 'Medik',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(
+                color: AppColors.primaryText,
+              ),
+              elevation: 0,
+                // backgroundColor: Colors.white
+            ),
             useMaterial3: true,
           ),
           home: const WelcomeScreen(),
