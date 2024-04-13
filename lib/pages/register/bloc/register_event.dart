@@ -3,10 +3,28 @@ part of 'register_bloc.dart';
 
 abstract class RegisterEvent {}
 
-class UsernameEvent extends RegisterEvent{}
+class UsernameEvent extends RegisterEvent{
+  final String username;
 
-class EmailEvent extends RegisterEvent{}
+  UsernameEvent(this.username);
+}
 
-class PasswordEvent extends RegisterEvent{}
+class EmailEvent extends RegisterEvent{
+  final String email;
+  EmailEvent(this.email);
 
-class RePasswordEvent extends RegisterEvent{}
+}
+
+class PasswordEvent extends RegisterEvent{
+  final String password;
+
+  PasswordEvent(this.password);
+
+}
+
+class RePasswordEvent extends RegisterEvent{
+  final String rePassword;
+
+  RePasswordEvent(this.rePassword);
+
+}

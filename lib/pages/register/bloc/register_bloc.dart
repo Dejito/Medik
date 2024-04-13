@@ -11,6 +11,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     on<UsernameEvent>((event, emit) {});
 
   }
-  void _usernameEvent
+  void _usernameEvent(EmailEvent event, Emitter<RegisterState> emit) {
+    emit(state.copyWith(email: event));
+}
 
 }
