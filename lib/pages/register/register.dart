@@ -55,9 +55,6 @@ class _RegisterState extends State<Register> {
                         "email",
                         "user",
                         (String text) {
-                          // context
-                          //     .read<RegisterBloc>()
-                          //     .add((text));
                           registerBloc.add(OnboardingEmailEvent(text));
                         },
                       ),
