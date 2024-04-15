@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medik/common/values/colors.dart';
+import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/bloc_providers.dart';
 import 'package:medik/pages/counter_test/app_bloc.dart';
 import 'package:medik/pages/register/register.dart';
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
             ),
             useMaterial3: true,
           ),
-          home: const WelcomeScreen(),
+          home: const ApplicationPage(),
           debugShowCheckedModeBanner: false,
           routes: {
             WelcomeScreen.route: (context) => const WelcomeScreen(),
