@@ -48,13 +48,14 @@ class AppPages {
 
   static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
     final result = routes().where((element) => element.route == settings.name);
-    print("nav result is $result");
+    // print("nav result is ${result.first.route}");
     if (result.isNotEmpty) {
       return MaterialPageRoute(
           builder: (_) => result.first.page, settings: settings);
+    } else {
+      return MaterialPageRoute(
+        builder: (_) => const WelcomeScreen(), settings: settings);
     }
-    return MaterialPageRoute(
-        builder: (_) => const SignInScreen(), settings: settings);
   }
 
   static List allBlocProviders(BuildContext context) {

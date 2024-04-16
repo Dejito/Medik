@@ -7,6 +7,9 @@ import 'package:medik/pages/sign_in/sign_in_widgets.dart';
 import '../../common/values/colors.dart';
 
 class ApplicationPage extends StatefulWidget {
+
+  static const id = "application_page";
+
   const ApplicationPage({super.key});
 
   @override
