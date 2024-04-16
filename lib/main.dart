@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medik/common/routes/pages.dart';
 import 'package:medik/common/values/colors.dart';
 import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/bloc_providers.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBlocsProvider.blocProviders,
+      providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           title: 'Medik',
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: const ApplicationPage(),
+          onGenerateRoute: AppPages.generateRouteSettings,
           debugShowCheckedModeBanner: false,
           routes: {
             WelcomeScreen.route: (context) => const WelcomeScreen(),
