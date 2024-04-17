@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:medik/common/service/storage_service.dart';
 
 class Global {
-  static late StorageService storageService;
+  static StorageService storageService = StorageService();
 
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +14,6 @@ class Global {
       messagingSenderId: "dejito",
       projectId: "shopappwithbloc",
     ));
-    storageService = await StorageService().init();
+    // storageService = await StorageService().init();
   }
 }

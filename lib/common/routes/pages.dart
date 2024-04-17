@@ -49,27 +49,69 @@ class AppPages {
     ];
   }
 
-  static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
-    if (settings.name != null) {
-      final result =
-          routes().where((element) => element.route == settings.name);
-      if (result.isNotEmpty) {
-        print("nav route is ${result.first.page}");
-        return MaterialPageRoute(
-            builder: (_) => result.first.page, settings: settings);
-      }
-    }
-    print("nav route is NA HERE we dey");
-    bool returningUser = StorageService().getBool(AppConstant.returningUser);
-    if (returningUser) {
-      print("nav route is returning user");
-      return MaterialPageRoute(builder: (_) => const SignInScreen());
-    } else {
-      print("nav route is first time user");
-      return MaterialPageRoute(
-        builder: (_) => const WelcomeScreen(), settings: settings);
-    }
+  static MaterialPageRoute<dynamic>? generateRouteSettings(RouteSettings settings) {
+    return MaterialPageRoute<dynamic>(
+      builder: (_) {
+        if (settings.name != null) {
+          final result = routes().where((element) => element.route == settings.name);
+          if (result.isNotEmpty) {
+            print("nav route is ${result.first.page}");
+            return result.first.page;
+          }
+        }
+        print("nav route is passed first check");
+        return FutureBuilder<bool>(
+          future: StorageService().getBool(AppConstant.returningUser),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              // If the future is still loading, return a loading indicator or something else.
+              return const Center(child: CircularProgressIndicator()); // Example loading indicator
+            } else {
+              if (snapshot.hasError) {
+                // Handle error
+                print("Error fetching returning user status: ${snapshot.error}");
+                return Container(); // Return something appropriate for your UI
+              } else {
+                bool returningUser = snapshot.data ?? false;
+                if (returningUser) {
+                  print("nav route is returning user $returningUser");
+                  return const SignInScreen();
+                } else {
+                  print("nav route is first time user");
+                  return const WelcomeScreen();
+                }
+              }
+            }
+          },
+        );
+      },
+      settings: settings,
+    );
   }
+
+
+  // static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
+  //   if (settings.name != null) {
+  //     final result =
+  //         routes().where((element) => element.route == settings.name);
+  //     if (result.isNotEmpty) {
+  //       print("nav route is ${result.first.page}");
+  //       return MaterialPageRoute(
+  //           builder: (_) => result.first.page, settings: settings);
+  //     }
+  //   }
+  //   print("nav route is passed first check");
+  //   bool returningUser = StorageService().getBool(AppConstant.returningUser);
+  //
+  //   if (returningUser) {
+  //     print("nav route is returning user $returningUser");
+  //     return MaterialPageRoute(builder: (_) => const SignInScreen());
+  //   } else {
+  //     print("nav route is first time user");
+  //     return MaterialPageRoute(
+  //       builder: (_) => const WelcomeScreen(), settings: settings);
+  //   }
+  // }
 
   static List allBlocProviders(BuildContext context) {
     List<dynamic> blocProviders = [];
