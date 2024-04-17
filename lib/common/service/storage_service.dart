@@ -18,7 +18,6 @@ class StorageService {
 
   Future<void> setBool(String key, bool value) async{
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
     prefs.setBool(key, true);
   }
 
@@ -27,5 +26,23 @@ class StorageService {
     final bool = prefs.getBool(key) ?? false;
     return bool;
   }
+
+  Future<void> setString (String key, String value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, value);
+  }
+
+  Future<void> removeString (String key) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
+  }
+
+  Future<bool> getIsLoggedIn() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final val = prefs.getString(AppConstant.userTokenKey)==null ? false : true;
+    print("is user logged in>>>$val");
+    return  val;
+  }
+
 
 }

@@ -10,7 +10,6 @@ import 'package:medik/pages/sign_in/sign_in_screen.dart';
 import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:medik/pages/welcome/welcome_screen.dart';
 
-import '../../pages/counter_test/app_bloc.dart';
 import '../../pages/register/bloc/register_bloc.dart';
 import '../../pages/register/register.dart';
 import '../../pages/sign_in/bloc/sign_in_bloc.dart';
@@ -49,35 +48,63 @@ class AppPages {
     ];
   }
 
-  static MaterialPageRoute<dynamic>? generateRouteSettings(RouteSettings settings) {
+  static MaterialPageRoute<dynamic>? generateRouteSettings(
+      RouteSettings settings) {
     return MaterialPageRoute<dynamic>(
       builder: (_) {
         if (settings.name != null) {
-          final result = routes().where((element) => element.route == settings.name);
+          final result =
+              routes().where((element) => element.route == settings.name);
           if (result.isNotEmpty) {
             print("nav route is ${result.first.page}");
             return result.first.page;
           }
         }
-        print("nav route is passed first check");
+        // print("nav route is passed first check");
         return FutureBuilder<bool>(
           future: StorageService().getBool(AppConstant.returningUser),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               // If the future is still loading, return a loading indicator or something else.
-              return const Center(child: CircularProgressIndicator()); // Example loading indicator
+              return const Center(
+                  child:
+                      CircularProgressIndicator()); // Example loading indicator
             } else {
               if (snapshot.hasError) {
                 // Handle error
-                print("Error fetching returning user status: ${snapshot.error}");
-                return Container(); // Return something appropriate for your UI
+                // print("Error fetching returning user status: ${snapshot.error}");
+                return const SignInScreen(); // Return something appropriate for your UI
               } else {
                 bool returningUser = snapshot.data ?? false;
                 if (returningUser) {
-                  print("nav route is returning user $returningUser");
+                  // print("nav route is returning user $returningUser");
+
+                  return FutureBuilder(
+                      future:
+                          StorageService().getIsLoggedIn(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else {
+                          if (snapshot.hasError) {
+                            // Handle error
+                            // print("Error fetching returning user status: ${snapshot.error}");
+                            return const SignInScreen();
+                          } else {
+                            bool isLoggedIn = snapshot.data ?? false;
+                            if (isLoggedIn) {
+                              return const ApplicationPage();
+                            } else {
+                              return const SignInScreen();
+                            }
+                          }
+                        }
+                      });
                   return const SignInScreen();
                 } else {
-                  print("nav route is first time user");
+                  // print("nav route is first time user");
                   return const WelcomeScreen();
                 }
               }
@@ -88,7 +115,6 @@ class AppPages {
       settings: settings,
     );
   }
-
 
   // static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
   //   if (settings.name != null) {

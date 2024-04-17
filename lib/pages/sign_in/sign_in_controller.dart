@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medik/common/service/storage_service.dart';
+import 'package:medik/common/values/constant.dart';
+import 'package:medik/global.dart';
 import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
 
@@ -42,6 +45,7 @@ class SignInController {
           var user = credentials.user;
           if (user != null) {
             print(user);
+            StorageService().setString(AppConstant.userTokenKey, "olami skillful");
             Navigator.of(context).pushReplacementNamed(ApplicationPage.id);
           }
 
