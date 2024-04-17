@@ -1,8 +1,8 @@
 part of 'application_bloc.dart';
 
-abstract class ApplicationEvent {
+class ApplicationEvent {
 
-   int? index;
+   int index;
 
   ApplicationEvent({this.index = 0});
 
