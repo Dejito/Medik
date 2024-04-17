@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
 
 import '../../common/flutter_toast.dart';
@@ -41,12 +42,10 @@ class SignInController {
           var user = credentials.user;
           if (user != null) {
             print(user);
-            // Global.storageService.setString(AppConstant.STORAGE_USER_TOKEN_KEY, '1234567');
-            // Navigator.pushReplacementNamed(context, ApplicationPage.route);
+            Navigator.of(context).pushReplacementNamed(ApplicationPage.id);
           }
 
         } on FirebaseAuthException catch (e) {
-          print("firebase exception");
           if (e.code == 'user-not-found') {
             toastInfo(message: "user not found");
             return;

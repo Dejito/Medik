@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medik/common/routes/names.dart';
 import 'package:medik/pages/applications/applications_page.dart';
+import 'package:medik/pages/applications/bloc/application_bloc.dart';
 import 'package:medik/pages/sign_in/sign_in_screen.dart';
 import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:medik/pages/welcome/welcome_screen.dart';
@@ -40,7 +41,7 @@ class AppPages {
         route: AppRoutes.application,
         page: const ApplicationPage(),
         bloc: BlocProvider(
-          create: (context) => AppBloc(),
+          create: (context) => ApplicationBloc(),
         ),
       ),
     ];
@@ -48,7 +49,6 @@ class AppPages {
 
   static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
     final result = routes().where((element) => element.route == settings.name);
-    // print("nav result is ${result.first.route}");
     if (result.isNotEmpty) {
       return MaterialPageRoute(
           builder: (_) => result.first.page, settings: settings);

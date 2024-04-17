@@ -5,26 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medik/common/routes/pages.dart';
 import 'package:medik/common/values/colors.dart';
-import 'package:medik/pages/applications/applications_page.dart';
-import 'package:medik/pages/bloc_providers.dart';
-import 'package:medik/pages/counter_test/app_bloc.dart';
-import 'package:medik/pages/register/register.dart';
-import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
-import 'package:medik/pages/sign_in/sign_in_screen.dart';
-import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
-import 'package:medik/pages/welcome/welcome_screen.dart';
+import 'package:medik/global.dart';
 
 Future<void> main() async {
   try {
-   WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(
-        options: const FirebaseOptions(
-          apiKey: "AIzaSyBHYlgxWVe9JBHN3IdBrdkryzEzd1GBgrE",
-          appId: "1:58523797120:android:5a2b834e3b5d9a01764865",
-          messagingSenderId: "dejito",
-          projectId: "shopappwithbloc",
-        )
-    );
+    Global.init();
     runApp(const MyApp());
   } catch (e) {
     if (kDebugMode) {
