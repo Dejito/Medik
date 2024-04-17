@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medik/common/routes/names.dart';
+import 'package:medik/common/service/storage_service.dart';
+import 'package:medik/common/values/constant.dart';
 import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/applications/bloc/application_bloc.dart';
 import 'package:medik/pages/sign_in/sign_in_screen.dart';
@@ -48,11 +50,22 @@ class AppPages {
   }
 
   static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
-    final result = routes().where((element) => element.route == settings.name);
-    if (result.isNotEmpty) {
-      return MaterialPageRoute(
-          builder: (_) => result.first.page, settings: settings);
+    if (settings.name != null) {
+      final result =
+          routes().where((element) => element.route == settings.name);
+      if (result.isNotEmpty) {
+        print("nav route is ${result.first.page}");
+        return MaterialPageRoute(
+            builder: (_) => result.first.page, settings: settings);
+      }
+    }
+    print("nav route is NA HERE we dey");
+    bool returningUser = StorageService().getBool(AppConstant.returningUser);
+    if (returningUser) {
+      print("nav route is returning user");
+      return MaterialPageRoute(builder: (_) => const SignInScreen());
     } else {
+      print("nav route is first time user");
       return MaterialPageRoute(
         builder: (_) => const WelcomeScreen(), settings: settings);
     }

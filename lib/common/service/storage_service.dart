@@ -7,15 +7,17 @@ class StorageService {
 
   Future<StorageService> init() async {
     _pref = await SharedPreferences.getInstance();
+    // _localStore = LocalStore(_sharedPreferences);
+    print("init'd");
     return this;
   }
 
-  Future<void> setBool() async{
-    _pref.setBool(AppConstant.storageDeviceOpenFirstTime, true);
+  Future<void> setBool(String key, bool value) async{
+    _pref.setBool(key, true);
   }
 
-  bool getBool() {
-    final bool = _pref.getBool(AppConstant.storageDeviceOpenFirstTime) ?? false;
+  bool getBool(String key) {
+    final bool = _pref.getBool(key) ?? false;
     return bool;
   }
 
