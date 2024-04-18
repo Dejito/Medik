@@ -13,9 +13,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildHomePageAppBar(),
-      body: Container(
-        child: const Center()
-      ),
+      body: const Center(),
     );
   }
 }
