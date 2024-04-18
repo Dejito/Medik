@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medik/pages/home/homepage.dart';
 
 import '../../common/values/colors.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = [
-    const Center( child:  Text('Home')),
+     const HomePageScreen(),
     const Center( child:  Text('Search')),
     const Center( child:  Text('Course')),
     const Center( child:  Text('Chat')),

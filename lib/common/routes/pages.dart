@@ -80,8 +80,7 @@ class AppPages {
                   // print("nav route is returning user $returningUser");
 
                   return FutureBuilder(
-                      future:
-                          StorageService().getIsLoggedIn(),
+                      future: StorageService().getIsLoggedIn(),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
