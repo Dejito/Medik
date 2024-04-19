@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/values/colors.dart';
+import '../bloc/homepage_bloc.dart';
 
 AppBar buildHomePageAppBar() {
   return AppBar(
@@ -110,43 +111,43 @@ Widget searchView() {
   );
 }
 
-// Widget slidersView(
-//     {required BuildContext context, required HomepageState state}) {
-//   return Column(
-//     children: [
-//       Container(
-//         margin: EdgeInsets.only(top: 20.h),
-//         width: 325.w,
-//         height: 160.h,
-//         child: PageView(
-//           onPageChanged: (value) {
-//             context.read<HomepageBloc>().add(HomePageDots(value));
-//             // print(state.index);
-//           },
-//           children: [
-//             sliderContainer('art'),
-//             sliderContainer('Image(1)'),
-//             sliderContainer('Image(2)'),
-//           ],
-//         ),
-//       ),
-//       Container(
-//         margin: EdgeInsets.only(top: 3.h),
-//         child: DotsIndicator(
-//           dotsCount: 3,
-//           position: state.index,
-//           decorator: DotsDecorator(
-//               color: AppColors.primaryThreeElementText,
-//               activeColor: AppColors.primaryElement,
-//               size: const Size.square(5.0),
-//               activeSize: const Size(17, 5),
-//               activeShape: RoundedRectangleBorder(
-//                   borderRadius: BorderRadius.circular(5.0))),
-//         ),
-//       )
-//     ],
-//   );
-// }
+Widget slidersView(
+    {required BuildContext context, required HomepageState state}) {
+  return Column(
+    children: [
+      Container(
+        margin: EdgeInsets.only(top: 20.h),
+        width: 325.w,
+        height: 160.h,
+        child: PageView(
+          onPageChanged: (value) {
+            // context.read<HomepageBloc>().add(HomePageDots(value));
+            // print(state.index);
+          },
+          children: [
+            sliderContainer('art'),
+            sliderContainer('Image(1)'),
+            sliderContainer('Image(2)'),
+          ],
+        ),
+      ),
+      Container(
+        margin: EdgeInsets.only(top: 3.h),
+        child: DotsIndicator(
+          dotsCount: 3,
+          position: state.index,
+          decorator: DotsDecorator(
+              color: AppColors.primaryThreeElementText,
+              activeColor: AppColors.primaryElement,
+              size: const Size.square(5.0),
+              activeSize: const Size(17, 5),
+              activeShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),),),
+        ),
+      )
+    ],
+  );
+}
 
 Widget sliderContainer(String imageName) {
   return Container(

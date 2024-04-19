@@ -52,15 +52,16 @@ class AppPages {
       RouteSettings settings) {
     return MaterialPageRoute<dynamic>(
       builder: (_) {
+        // this very first check is skipped at the first time of asking
         if (settings.name != null) {
           final result =
               routes().where((element) => element.route == settings.name);
           if (result.isNotEmpty) {
-            print("nav route is ${result.first.page}");
+            // print("nav route is ${result.first.page}");
             return result.first.page;
           }
         }
-        // print("nav route is passed first check");
+        // print("nav route passed first check");
         return FutureBuilder<bool>(
           future: StorageService().getBool(AppConstant.returningUser),
           builder: (context, snapshot) {
@@ -78,7 +79,6 @@ class AppPages {
                 bool returningUser = snapshot.data ?? false;
                 if (returningUser) {
                   // print("nav route is returning user $returningUser");
-
                   return FutureBuilder(
                       future: StorageService().getIsLoggedIn(),
                       builder: (context, snapshot) {
