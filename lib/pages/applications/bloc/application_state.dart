@@ -8,6 +8,6 @@ class ApplicationState {
 
 }
 
-final class ApplicationInitial extends ApplicationState {
+class ApplicationInitial extends ApplicationState {
   ApplicationInitial(): super(0);
 }

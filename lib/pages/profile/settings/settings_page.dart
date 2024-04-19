@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medik/pages/home/bloc/homepage_bloc.dart';
+import 'package:medik/pages/applications/bloc/application_bloc.dart';
 import 'package:medik/pages/profile/settings/settings_widget/settings_widget.dart';
-import 'package:medik/pages/profile/widget/profile_widget.dart';
 
 import '../../../common/routes/names.dart';
 import '../../../common/values/constant.dart';
@@ -21,9 +20,9 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   void removeUserData(BuildContext context) {
-    context.read<HomepageBloc>().add(HomeDotsEvent(0));
+    context.read<ApplicationBloc>().add(ApplicationEvent(index: 0));
     Global.storageService.removeString(AppConstant.storageUserProfileKey);
-    Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.signIn, (route) => false);
+    // Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.signIn, (route) => false);
     Navigator.of(context).pushReplacementNamed(AppRoutes.signIn);
   }
 
