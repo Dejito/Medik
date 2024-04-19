@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/values/colors.dart';
+import '../../common/widget/base_text_widget.dart';
 
 
 Widget buildThirdPartyLogin() {
@@ -29,12 +30,71 @@ Widget _reusableIcons(String iconName) {
   );
 }
 
-Widget reusableText(String text) {
+// Widget reusableText(String text) {
+//   return Container(
+//     margin: EdgeInsets.only(bottom: 5.h, top: 14.h),
+//     child: Text(
+//       text,
+//       style: TextStyle(color: Colors.grey[500], fontSize: 14.sp),
+//     ),
+//   );
+// }
+
+Widget reusableMenuText(String text,
+    {Color backgroundColor = AppColors.primaryElement,
+      Color textColor = AppColors.primaryElementText}) {
   return Container(
-    margin: EdgeInsets.only(bottom: 5.h, top: 14.h),
-    child: Text(
-      text,
-      style: TextStyle(color: Colors.grey[500], fontSize: 14.sp),
+    margin: EdgeInsets.only(right: 20.w),
+    decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(7.w),
+        border: Border.all(color: backgroundColor)),
+    padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
+    child: reusableText(text,
+        color: textColor, fontWeight: FontWeight.normal, fontSize: 11),
+  );
+}
+
+
+Widget courseGrid() {
+  return Container(
+    padding: EdgeInsets.all(12.w),
+    decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage("assets/icons/Image(1).png")
+        )
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Best course for IT and Engineering",
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          textAlign: TextAlign.left,
+          softWrap: false,
+          style: TextStyle(
+              fontSize: 11.sp,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primaryElementText
+          ),
+        ),
+        SizedBox(height: 5.h),
+        Text(
+          "Flutter best course",
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          textAlign: TextAlign.left,
+          softWrap: false,
+          style: TextStyle(
+              fontSize: 8.sp,
+              fontWeight: FontWeight.normal,
+              color: AppColors.primaryFourElementText
+          ),
+        ),
+
+      ],
     ),
   );
 }

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medik/pages/register/register_controller.dart';
 import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
 
+import '../../common/widget/base_text_widget.dart';
 import '../common_widgets.dart';
 import '../sign_in/sign_in_widgets.dart';
 import 'bloc/register_bloc.dart';

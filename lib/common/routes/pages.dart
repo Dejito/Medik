@@ -1,20 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medik/common/routes/names.dart';
 import 'package:medik/common/service/storage_service.dart';
 import 'package:medik/common/values/constant.dart';
 import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/applications/bloc/application_bloc.dart';
+import 'package:medik/pages/home/bloc/homepage_bloc.dart';
+import 'package:medik/pages/home/homepage.dart';
 import 'package:medik/pages/sign_in/sign_in_screen.dart';
 import 'package:medik/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:medik/pages/welcome/welcome_screen.dart';
 
+import '../../pages/profile/settings/bloc/settings_bloc.dart';
+import '../../pages/profile/settings/settings_page.dart';
 import '../../pages/register/bloc/register_bloc.dart';
 import '../../pages/register/register.dart';
 import '../../pages/sign_in/bloc/sign_in_bloc.dart';
 
 class AppPages {
+
   static List<PageEntity> routes() {
     return <PageEntity>[
       PageEntity(
@@ -45,6 +51,18 @@ class AppPages {
           create: (context) => ApplicationBloc(),
         ),
       ),
+      PageEntity(
+        route: AppRoutes.homepage,
+        page: const HomePageScreen(),
+        bloc: BlocProvider(
+          create: (context) => HomepageBloc(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.settingsPage,
+        page: const SettingsPage(),
+        bloc: BlocProvider(create: (context) => SettingsBloc(),),
+      ),
     ];
   }
 
@@ -52,15 +70,16 @@ class AppPages {
       RouteSettings settings) {
     return MaterialPageRoute<dynamic>(
       builder: (_) {
+        // this very first check is skipped at the first time of asking
         if (settings.name != null) {
           final result =
               routes().where((element) => element.route == settings.name);
           if (result.isNotEmpty) {
-            print("nav route is ${result.first.page}");
+            // print("nav route is ${result.first.page}");
             return result.first.page;
           }
         }
-        // print("nav route is passed first check");
+        // print("nav route passed first check");
         return FutureBuilder<bool>(
           future: StorageService().getBool(AppConstant.returningUser),
           builder: (context, snapshot) {
@@ -78,10 +97,8 @@ class AppPages {
                 bool returningUser = snapshot.data ?? false;
                 if (returningUser) {
                   // print("nav route is returning user $returningUser");
-
                   return FutureBuilder(
-                      future:
-                          StorageService().getIsLoggedIn(),
+                      future: StorageService().getIsLoggedIn(),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -137,6 +154,14 @@ class AppPages {
   //     return MaterialPageRoute(
   //       builder: (_) => const WelcomeScreen(), settings: settings);
   //   }
+  // }
+
+  // List bList = ["oto", "moto"];
+  //
+  // Widget conta (){
+  //   bList.forEach((element) {
+  //     return Container();
+  //   })
   // }
 
   static List allBlocProviders(BuildContext context) {

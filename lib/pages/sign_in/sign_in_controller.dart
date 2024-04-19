@@ -7,7 +7,7 @@ import 'package:medik/global.dart';
 import 'package:medik/pages/applications/applications_page.dart';
 import 'package:medik/pages/sign_in/bloc/sign_in_bloc.dart';
 
-import '../../common/flutter_toast.dart';
+import '../../common/widget/flutter_toast.dart';
 
 class SignInController {
   final BuildContext context;
