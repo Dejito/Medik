@@ -46,17 +46,17 @@ class MyApp extends StatelessWidget {
             ),
             useMaterial3: true,
           ),
-          home: const ApplicationPage(),
-          // onGenerateRoute: AppPages.generateRouteSettings,
+          // home: const ApplicationPage(),
+          onGenerateRoute: AppPages.generateRouteSettings,
           debugShowCheckedModeBanner: false,
-          routes: {
-            WelcomeScreen.route: (context) => const WelcomeScreen(),
-            // MyHomePage.route: (context) => const MyHomePage(),
-            SignInScreen.route: (context) => const SignInScreen(),
-            // Register.id: (context) => const Register(),
-            SettingsPage.route: (context) => SettingsPage()
-
-          },
+          // routes: {
+          //   WelcomeScreen.route: (context) => const WelcomeScreen(),
+          //   // MyHomePage.route: (context) => const MyHomePage(),
+          //   SignInScreen.route: (context) => const SignInScreen(),
+          //   // Register.id: (context) => const Register(),
+          //   SettingsPage.route: (context) => SettingsPage()
+          //
+          // },
         ),
       ),
     );
